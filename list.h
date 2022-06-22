@@ -6,7 +6,7 @@
 #include <iostream>
 
 
-template <class T, class Alloc>
+template <class T, class Alloc = std::allocator<T>>
 class MyForwardList
 {
 private:
@@ -53,13 +53,13 @@ public:
         return m_size;
     }
 
-    void print()
+    void print(std::ostream& out = std::cout)
     {
         Node* node = m_head;
         std::size_t i = m_size - 1;
         while (node)
         {
-            std::cout << i-- << " " << node->m_value << std::endl;
+            out << i-- << " " << node->m_value << '\n';
             node = node->m_next;
         }
     }
